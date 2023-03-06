@@ -1,25 +1,40 @@
-import logo from './logo.svg';
+import React from 'react'
+import { Component } from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+  constructor() {
+    super();
+  
+    this.state = {
+      name: {firstname: 'Ryan', lastname: 'Anderson'},
+      company: "Cynder Developments"
+    }
+  }
+
+render() {
+    return (
+      <div className="App">
+      <p>Hi {this.state.name.firstname} {this.state.name.lastname}, I work at {this.state.company}</p>
+      <button
+      onClick={() => {
+        this.setState(() => {
+          return{
+            name: {firstname:'Elijah', lastname: 'Kugler'},
+          };
+        },
+        () =>{
+          console.log(this.state)
+        }
+        );
+      }}
+      >
+      Change Name
+      </button>
+      </div>
+    );
+  }
 }
 
 export default App;
